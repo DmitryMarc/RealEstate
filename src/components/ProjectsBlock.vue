@@ -37,18 +37,19 @@
             </div>
 
         </div>
-        <div class="projects__cards">
-
-        </div>
+        <CaldsList />
     </div>
 </template>
 
 <script>
-import VBtn from './UI/v-btn.vue'
+import VBtn from './UI/v-btn.vue';
+import CaldsList from './CardsList.vue';
+
 
 export default {
     components: {
-        VBtn
+        VBtn,
+        CaldsList
     }
 }
 
