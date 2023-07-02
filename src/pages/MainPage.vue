@@ -1,6 +1,7 @@
 <template>
     <v-header />
     <ConsultationForm />
+    <ProjectsBlock />
 </template>
 
 <script>

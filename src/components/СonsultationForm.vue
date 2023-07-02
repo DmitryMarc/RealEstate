@@ -49,13 +49,27 @@
                     Нажимая на кнопку Отправить, я подтверждаю согласие на 
                     <span>обработку персолнальных данных</span>
                 </span>
-                <button class="consultation__form-bottom-btn">
+                <!-- <button class="consultation__form-bottom-btn">
                     Отправить
-                </button>
+                </button> -->
+                <v-btn>
+                    Отправить
+                </v-btn>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+import VBtn from './UI/v-btn.vue';
+export default {
+    components:{
+        VBtn
+    }
+}
+
+
+</script>
 
 <style scoped lang="scss">
 .consultation{
@@ -128,6 +142,7 @@
 
         &-bottom{
             display: flex;
+            gap: 50px;
             justify-content: space-between;
 
             &-confirmation{
@@ -136,7 +151,7 @@
             }
 
             &-btn{
-                width: 372px;
+                flex: 1;
                 padding: 16px, 24px;
 
                 font-size: 18px;
