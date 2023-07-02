@@ -76,7 +76,7 @@ export default{
 
     &__location{
         display: flex;
-        align-items: center;
+        align-items: baseline;
         gap: 8px;
 
         &-text{

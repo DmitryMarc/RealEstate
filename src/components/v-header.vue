@@ -1,11 +1,6 @@
 <template>
     <div class="header">
-        <div class="header__logo">
-            <img class="header__logo-img" src="../assets/img/house-logo.png" alt="logo" />
-            <a class="header__logo-title">
-                Real estate
-            </a>
-        </div>
+        <LogoEntity />
         <div class="header__links">
             <nav class="header__links-list">
                 <a href="#">О компании</a>
@@ -33,29 +28,23 @@
     </div>
 </template>
 
+<script>
+import LogoEntity from './LogoEntity.vue';
+
+export default {
+    components:{
+        LogoEntity
+    }
+}
+
+</script>
+
 
 <style scoped lang="scss">
 
 .header{
     display: flex;
     justify-content: space-between;
-
-    &__logo{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 10px;
-
-        &-img{
-            width: 40px;
-        }
-
-        &-title{
-            font-weight: 500;
-            font-size: 24px;
-            color: #3C3C3B;
-        }
-    }
     
     &__links{
         display: flex;
@@ -93,7 +82,7 @@
         &-location{
             display: flex;
             gap: 8px;
-            align-items: center;
+            align-items: baseline;
             padding: 8px 16px;
 
             font-size: 18px;
