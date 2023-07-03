@@ -1,7 +1,11 @@
 <template>
     <div class="card">
         {{ house1 }}
-        <img src="../assets/img/cards/house1.png" alt="фото" class="card__img" />
+        <img 
+            src="../assets/img/cards/house1.png" 
+            alt="фото" 
+            class="card__img" 
+        />
         <div class="card__info">
             <h3 class="card__info-title">
                 {{ item.title }}
@@ -11,7 +15,7 @@
             </span>
         </div>
         <span class="card__location">
-            <font-awesome-icon icon="location-dot" />
+            <font-awesome-icon icon="location-dot" color="#719B2D" />
             <span class="card__location-text">
                 {{ item.location }}
             </span>
@@ -29,12 +33,8 @@ export default{
             price: Number,
             location: String
         }
-    },
-    computed: {
-        imageSrc() {
-            return `../assets/img/cards/${this.item.imgUrl}`;
-        }
-  }
+    }
+
 }
 
 </script>

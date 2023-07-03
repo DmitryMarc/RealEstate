@@ -1,6 +1,10 @@
 <template>
     <div class="logo">
-        <img class="logo__img" src="../assets/img/house-logo.png" alt="logo" />
+        <img 
+            class="logo__img" 
+            src="../assets/img/house-logo.png" 
+            alt="logo" 
+        />
         <a class="logo__title">
             Real estate
         </a>
@@ -15,8 +19,8 @@
     gap: 10px;
 
     &__img{
-            width: 40px;
-        }
+        width: 40px;
+    }
 
     &__title{
         font-weight: 500;

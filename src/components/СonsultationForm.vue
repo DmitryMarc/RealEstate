@@ -16,6 +16,7 @@
                 </div>
             </div>
         </div>
+
         <div class="consultation__form">
             <div class="consultation__form-top">
                 <h3 class="consultation__form-top-title">
@@ -23,48 +24,76 @@
                 </h3>
                 <span class="consultation__form-top-description">
                     Оставьте заявку. Мы свяжемся с вами в течение 
-                    <span>10 минут</span>
+                    <span class="consultation__mark">10 минут</span>
                 </span>
             </div>
+
             <div class="consultation__form-content">
                 <div class="consultation__form-content-item">
-                    <label>Ваше имя</label>
-                    <input placeholder="Ваше имя..." class="consultation__form-content-field" />
+                    <label class="consultation__form-content-title"> 
+                        <img src="../assets/img/icons/user-icon.svg" /> 
+                        Ваше имя
+                    </label>
+                    <input 
+                        placeholder="Ваше имя..." 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
                 <div class="consultation__form-content-item">
-                    <label>Email</label>
-                    <input placeholder="Введите Email..." class="consultation__form-content-field" />
+                    <label class="consultation__form-content-title">
+                        <img src="../assets/img/icons/email-icon.svg" />
+                        Email
+                    </label>
+                    <input 
+                        placeholder="Введите Email..." 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
                 <div class="consultation__form-content-item">
-                    <label>Номер телефона</label>
-                    <input placeholder="+7 (XXX) XXX-XX-XX" class="consultation__form-content-field" />
+                    <label class="consultation__form-content-title">
+                        <img src="../assets/img/icons/call-icon.svg" />
+                        Номер телефона
+                    </label>
+                    <input 
+                        placeholder="+7 (XXX) XXX-XX-XX" 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
                 <div class="consultation__form-content-item">
-                    <label>Вопрос</label>
-                    <input placeholder="Оставьте комментарий..." class="consultation__form-content-field" />
+                    <label class="consultation__form-content-title">
+                        <img src="../assets/img/icons/question-icon.svg" />
+                        Вопрос
+                    </label>
+                    <input 
+                        placeholder="Оставьте комментарий..." 
+                        class="consultation__form-content-field" 
+                    
+                        />
                 </div>
             </div>
+
             <div class="consultation__form-bottom">
                 <span class="consultation__form-bottom-confirmation">
                     Нажимая на кнопку Отправить, я подтверждаю согласие на 
-                    <span>обработку персолнальных данных</span>
+                    <span class="consultation__mark">
+                        обработку персолнальных данных
+
+                    </span>
                 </span>
-                <!-- <button class="consultation__form-bottom-btn">
+
+                <v-basic-btn>
                     Отправить
-                </button> -->
-                <v-btn>
-                    Отправить
-                </v-btn>
+                </v-basic-btn>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import VBtn from './UI/v-btn.vue';
+import VBasicBtn from './UI/v-basic-btn.vue';
 export default {
     components:{
-        VBtn
+        VBasicBtn
     }
 }
 
@@ -124,11 +153,49 @@ export default {
         border-radius: 32px;
         background-color: #F6F6F6;
 
+        &-top{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            &-title{
+                margin: 0;
+                font-size: 32px;
+                font-weight: 500;
+
+                color: #3C3C3B;
+            }
+
+            &-description{
+                font-size: 16px;
+                color: #3C3C3B;
+            }
+        }
+
         &-content{
             width: 800px;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            gap: 32px 22px;
+
+            &-item{
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            &-title{
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                font-size: 12px;
+                font-weight: 500;
+
+                text-transform: uppercase;
+                color: #3C3C3B;
+            }
 
             &-field{
                 display: flex;
@@ -148,6 +215,7 @@ export default {
             &-confirmation{
                 width: 372px;
                 font-size: 14px;
+                color: #9A9A9A;
             }
 
             &-btn{
@@ -164,6 +232,10 @@ export default {
                 cursor: pointer;
             }
         }
+    }
+
+    &__mark{
+        color: #719B2D
     }
 }
 </style>

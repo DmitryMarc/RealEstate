@@ -11,7 +11,6 @@ import ConsultationForm from '../components/СonsultationForm.vue';
 import ProjectsBlock from '../components/ProjectsBlock.vue';
 import VFooter from '../components/v-footer.vue';
 
-
 export default {
     components:{
         VHeader,

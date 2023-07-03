@@ -3,26 +3,36 @@
         <div class="footer__info">
             <LogoEntity />
             <div class="footer__info-contacts">
-                <button class="footer__info-location">
+                <v-extra-btn>
                     <font-awesome-icon icon="location-dot" />
                     Санкт-Петербург
-                </button>
+                </v-extra-btn>
                 <span class="footer__info-number">
                     +7 (812) 910 00 60
                 </span>
             </div>
             <span class="footer__info-confirmation">
                 База данных о недвижимости. Использование сайта 
-                означает согласие с Пользовательским соглашением и 
-                Политикой конфиденциальности. Оплачивая лицензионный 
+                означает согласие с 
+                <span class="footer__mark">Пользовательским соглашением</span> и 
+                <span class="footer__mark">Политикой конфиденциальности</span>. 
+                Оплачивая лицензионный 
                 платеж, вы принимаете Лицензионное соглашение
             </span>
         </div>
-        <div class="footer__navigation" v-for="item in linksList" :key="item.title">
+        <div 
+            class="footer__navigation" 
+            v-for="item in linksList" 
+            :key="item.title"
+        >
             <div class="footer__navigation-col">
-                <h4 class="footer__navigation-title">Проекты</h4>
+                <h4 class="footer__navigation-title">
+                    Проекты
+                </h4>
                 <nav class="footer__navigation-links">
-                    <a v-for="link in item.links" :key="link.id" href="#">{{ link.title }}</a>
+                    <a v-for="link in item.links" :key="link.id" href="#">
+                        {{ link.title }}
+                    </a>
                 </nav>
             </div>
         </div>
@@ -31,10 +41,12 @@
 
 <script>
 import LogoEntity from './LogoEntity.vue';
+import VExtraBtn from './UI/v-extra-btn.vue'
 
 export default {
     components:{
-        LogoEntity
+        LogoEntity,
+        VExtraBtn
     },
     data(){
         return {
@@ -127,12 +139,9 @@ export default {
                     ],
                 }
             ]
-
         }
     }
 }
-
-
 </script>
 
 <style scoped lang="scss">
@@ -156,22 +165,6 @@ export default {
             display: flex;
             justify-content: space-between;
             gap: 24px;
-        }
-
-        &-location{
-            display: flex;
-            gap: 8px;
-            align-items: baseline;
-            padding: 8px 16px;
-
-            font-size: 18px;
-            font-weight: 500;
-            color: #719B2D;
-
-            border-radius: 24px;
-            border: none;
-            background-color: #F6F6F6;
-            cursor: pointer;
         }
 
         &-number{
@@ -218,9 +211,12 @@ export default {
                 font-size: 16px;
                 font-weight: 500;
                 color: #3C3C3B;
-
             }
         }
+    }
+
+    &__mark{
+        color:#719B2D
     }
 }
 

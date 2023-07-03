@@ -1,8 +1,9 @@
 <template>
     <div class="projects">
         <h2 class="projects__title">
-            Наши <span>проекты</span>
+            Наши <span class="projects__mark">проекты</span>
         </h2>
+
         <div class="projects__filters">
             <div class="projects__filters-item">
                 <label class="projects__filters-title">
@@ -10,7 +11,7 @@
                 </label>
                 <div class="projects__filters-location">
                     <span>Район</span>
-                    <font-awesome-icon icon="angle-down" />
+                    <font-awesome-icon icon="angle-down" color="#719B2D" />
                 </div>
             </div>
 
@@ -24,31 +25,33 @@
                     <span>до 19,2</span>
                 </div>
             </div>
+
             <div class="projects__filters-item">
-                <!-- <button>Только со скидкой</button> -->
-                <v-btn>
+                <v-basic-btn>
                     Только со скидкой
                     <font-awesome-icon icon="circle-dot" />
-                </v-btn>
+                </v-basic-btn>
                 <button class="projects__filters-reset">
-                    <label class="projects__filters-title">Сбросить все фильтры</label>
+                    <label class="projects__filters-title">
+                        Сбросить все фильтры
+                    </label>
                     <font-awesome-icon icon="xmark" />
                 </button>
             </div>
-
         </div>
+
         <CaldsList />
     </div>
 </template>
 
 <script>
-import VBtn from './UI/v-btn.vue';
+import VBasicBtn from './UI/v-basic-btn.vue';
 import CaldsList from './CardsList.vue';
 
 
 export default {
     components: {
-        VBtn,
+        VBasicBtn,
         CaldsList
     }
 }
@@ -60,6 +63,10 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 50px;
+
+    &__mark{
+        color: #719B2D
+    }
 
     &__title{
         margin: 0;
@@ -100,6 +107,10 @@ export default {
             background-color: #F6F6F6;
             border-radius: 32px;
             padding: 18px 24px;
+
+            font-size: 18px;
+            font-weight: 500;
+            color: #3C3C3B;
         }
 
         &-reset{

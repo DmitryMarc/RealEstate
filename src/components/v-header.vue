@@ -3,24 +3,21 @@
         <LogoEntity />
         <div class="header__links">
             <nav class="header__links-list">
-                <a href="#">О компании</a>
-                <a href="#">Инвесторам</a>
-                <a href="#">Для жителей</a>
+                <a v-for="item in info" :key="item.id" href="#" class="active">
+                    {{ item.linkTitle }}
+                </a>
             </nav>
             <nav class="header__links-list">
-                <a href="#">Новостройки</a>
-                <a href="#">Вторички</a>
-                <a href="#">Комерческая</a>
-                <a href="#">Загородная</a>
-                <a href="#">Аренда</a>
-                <a href="#">Ипотека</a>
+                <a v-for="item in filters" :key="item.id" href="#">
+                    {{ item.linkTitle }}
+                </a>
             </nav>
         </div>
         <div class="header__contacts">
-            <button class="header__contacts-location">
+            <v-extra-btn>
                 <font-awesome-icon icon="location-dot" />
                 Санкт-Петербург
-            </button>
+            </v-extra-btn>
             <span class="header__contacts-number">
                 +7 (812) 910 00 60
             </span>
@@ -30,10 +27,56 @@
 
 <script>
 import LogoEntity from './LogoEntity.vue';
+import VExtraBtn from './UI/v-extra-btn.vue'
 
 export default {
     components:{
-        LogoEntity
+        LogoEntity,
+        VExtraBtn
+    },
+    data(){
+        return {
+            info:[
+                {
+                    id: '0',
+                    linkTitle: 'О компании'
+                },
+                {
+                    id: '1',
+                    linkTitle: 'Инвесторам'
+                },
+                {
+                    id: '2',
+                    linkTitle: 'Для жителей'
+                }
+            ],
+            filters: [
+                {
+                    id: '0',
+                    linkTitle: 'Новостройки'
+                },
+                {
+                    id: '1',
+                    linkTitle: 'Вторички'
+                },
+                {
+                    id: '2',
+                    linkTitle: 'Комерческая'
+                },
+                {
+                    id: '3',
+                    linkTitle: 'Загородная'
+                },
+                {
+                    id: '4',
+                    linkTitle: 'Аренда'
+                },
+                {
+                    id: '5',
+                    linkTitle: 'Ипотека'
+                }
+            ]
+        }
     }
 }
 
@@ -74,26 +117,14 @@ export default {
         }
     }
 
+    a.active{
+        color: #587725
+    }
+
     &__contacts{
         display: flex;
         align-items: flex-end;
         gap: 16px;
-
-        &-location{
-            display: flex;
-            gap: 8px;
-            align-items: baseline;
-            padding: 8px 16px;
-
-            font-size: 18px;
-            font-weight: 500;
-            color: #719B2D;
-
-            border-radius: 24px;
-            border: none;
-            background-color: #F6F6F6;
-            cursor: pointer;
-        }
 
         &-number{
             font-size: 24px;
