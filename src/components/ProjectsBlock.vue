@@ -20,10 +20,19 @@
                     Задайте стоимость
                 </label>
                 <div class="projects__filters-price">
-                    <span>от 2,9</span>
+                    <span>от 
+                        <span class="projects__filters-price-number">
+                            {{ rangeValue[0] }}
+                        </span>
+                    </span>
                     <span>—</span>
-                    <span>до 19,2</span>
+                    <span>до 
+                        <span class="projects__filters-price-number">
+                            {{ rangeValue[1] }}
+                        </span>
+                    </span>
                 </div>
+                <v-range-field :onChange="changeRangeHandler" :rangeValue=rangeValue />
             </div>
 
             <div class="projects__filters-item">
@@ -47,12 +56,23 @@
 <script>
 import VBasicBtn from './UI/v-basic-btn.vue';
 import CaldsList from './CardsList.vue';
-
+import VRangeField from './UI/v-range-field.vue';
 
 export default {
     components: {
         VBasicBtn,
-        CaldsList
+        CaldsList,
+        VRangeField
+    },
+    data() {
+        return {
+            rangeValue: [2.9, 19.2]
+        }
+    },
+    methods:{
+        changeRangeHandler(value){
+            this.rangeValue = value;
+        }
     }
 }
 
@@ -85,12 +105,14 @@ export default {
             display: flex;
             flex: 1;
             gap: 16px;
+            position: relative;
 
             &:not(:last-child){
                 flex-direction: column;
                 font-size: 18px;
                 font-weight: 500;
             }
+
         }
 
         &-title{
@@ -111,6 +133,18 @@ export default {
             font-size: 18px;
             font-weight: 500;
             color: #3C3C3B;
+
+            &-number{
+                display: inline-block;
+                min-width: 40px;
+            }
+        }
+
+        &-range{
+            width: 100%;
+            padding: 0 24px;
+            position: relative;
+            box-sizing: border-box;
         }
 
         &-reset{
