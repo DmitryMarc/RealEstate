@@ -1,32 +1,22 @@
 <template>
     <div class="consultation">
-        <swiper
-            :modules="modules" 
-            :slides-per-view="1" 
-            :navigation="{
-                prevEl: '#swiper-prev',
-                nextEl: '#swiper-next'
-            }" 
-        >
-            <swiper-slide
-                v-for="item in 3"
-                :key="item"
-            >
-                <div class="consultation__advertisement">
-                    <h2 class="consultation__advertisement-title">
-                        Уютные квартиры со скидкой 10%
-                    </h2>
-                    <a class="consultation__advertisement-link">
-                        Узнать подробнее
-                        <font-awesome-icon icon="angle-right" />
-                    </a>
-                </div>
-            </swiper-slide>
-        </swiper>
+        <v-swiper-slides :totalPages="totalPages">
+            <div class="consultation__advertisement">
+                <h2 class="consultation__advertisement-title">
+                    Уютные квартиры со скидкой 10%
+                </h2>
+                <a class="consultation__advertisement-link">
+                    Узнать подробнее
+                    <font-awesome-icon icon="angle-right" />
+                </a>
+            </div>
+        </v-swiper-slides>
         <div class="consultation__advertisement-pagination">
-            <font-awesome-icon icon="angle-left" :id="'swiper-prev'" @click="changeSlideHandler('prev')" />
-            <span>{{ currentPage }}</span><span>/ {{ totalPages }}</span>
-            <font-awesome-icon icon="angle-right" :id="'swiper-next'" @click="changeSlideHandler('next')" />
+            <v-slides-pagination 
+                @onChangeSlide="changeSlideHandler" 
+                :currentPage="currentPage" 
+                :totalPages="totalPages" 
+            />
         </div>
         <div class="consultation__form">
             <div class="consultation__form-top">
@@ -35,7 +25,9 @@
                 </h3>
                 <span class="consultation__form-top-description">
                     Оставьте заявку. Мы свяжемся с вами в течение
-                    <span class="consultation__mark">10 минут</span>
+                    <span class="consultation__mark">
+                        10 минут
+                    </span>
                 </span>
             </div>
 
@@ -45,28 +37,40 @@
                         <img src="../assets/img/icons/user-icon.svg" />
                         Ваше имя
                     </label>
-                    <input placeholder="Ваше имя..." class="consultation__form-content-field" />
+                    <input 
+                        placeholder="Ваше имя..." 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
                 <div class="consultation__form-content-item">
                     <label class="consultation__form-content-title">
                         <img src="../assets/img/icons/email-icon.svg" />
                         Email
                     </label>
-                    <input placeholder="Введите Email..." class="consultation__form-content-field" />
+                    <input 
+                        placeholder="Введите Email..." 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
                 <div class="consultation__form-content-item">
                     <label class="consultation__form-content-title">
                         <img src="../assets/img/icons/call-icon.svg" />
                         Номер телефона
                     </label>
-                    <input placeholder="+7 (XXX) XXX-XX-XX" class="consultation__form-content-field" />
+                    <input 
+                        placeholder="+7 (XXX) XXX-XX-XX" 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
                 <div class="consultation__form-content-item">
                     <label class="consultation__form-content-title">
                         <img src="../assets/img/icons/question-icon.svg" />
                         Вопрос
                     </label>
-                    <input placeholder="Оставьте комментарий..." class="consultation__form-content-field" />
+                    <input 
+                        placeholder="Оставьте комментарий..." 
+                        class="consultation__form-content-field" 
+                    />
                 </div>
             </div>
 
@@ -75,7 +79,6 @@
                     Нажимая на кнопку Отправить, я подтверждаю согласие на
                     <span class="consultation__mark">
                         обработку персолнальных данных
-
                     </span>
                 </span>
 
@@ -88,19 +91,15 @@
 </template>
 
 <script>
-import { Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
+import VSwiperSlides from './UI/v-swiper-slides.vue';
+import VSlidesPagination from './UI/v-slides-pagination.vue';
 import VBasicBtn from './UI/v-basic-btn.vue';
+
 export default {
     components: {
         VBasicBtn,
-        Swiper,
-        SwiperSlide
+        VSwiperSlides,
+        VSlidesPagination
     },
     setup() {
         const onSwiper = (swiper) => {
@@ -125,11 +124,15 @@ export default {
         changeSlideHandler(value){
             switch (value) {
                 case 'prev': {
-                    if (this.currentPage > 1) this.currentPage--;
+                    if (this.currentPage > 1){
+                        this.currentPage--;
+                    }
                     break;
                 }
                 case 'next':{
-                    if (this.currentPage < this.totalPages) this.currentPage++;
+                    if (this.currentPage < this.totalPages){
+                        this.currentPage++;
+                    }
                     break;
                 }
             }
@@ -164,6 +167,7 @@ export default {
             line-height: 56px;
             color: white;
             margin: 0;
+            cursor: default;
         }
 
         &-link {
@@ -173,6 +177,7 @@ export default {
             font-size: 16px;
             font-weight: 500;
             color: white;
+            cursor: pointer;
         }
 
         &-pagination {
